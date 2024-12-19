@@ -23,6 +23,11 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function lists()
+    {
+        return $this->hasMany(TodoList::class, 'create_by');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->date('date');
-            $table->enum('priority',[0,1,2]);
-            $table->enum('status',[0,1]);
+            $table->date('duedate');
+            $table->enum('priority',['notimportant','important','veryimportant']);
+            $table->enum('status',['unfinished','finished']);
+            $table->foreignId('create_by')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

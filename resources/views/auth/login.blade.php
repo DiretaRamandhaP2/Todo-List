@@ -10,6 +10,7 @@
 <body>
     <div class="container" >
         <form action="/auth" method="post" class=" w-100 d-flex justify-content-center align-items-center" style="height: 100vh;">
+            @csrf
             <div class="row shadow py-5 px-5 rounded w-50">
                 <div class="col-12 py-4">
                     <h3 class="fw-bold text-center">LOGIN</h3>
@@ -22,8 +23,11 @@
                     <label for="">Password</label>
                     <input type="password" name="password" class="form-control" id="" required>
                 </div>
-                <div class="col-12 py-3 text-center">
+                <div class="col-12 pt-3 text-center">
                     <input type="submit" value="Login" class="btn btn-primary fw-bold w-50 rounded ">
+                </div>
+                <div class="col-12 text-center">
+                    <a href="/register"><p>create an account?</p></a>
                 </div>
             </div>
         </form>

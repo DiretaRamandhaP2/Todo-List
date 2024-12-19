@@ -38,6 +38,8 @@
 </style>
 
 <body>
+    @include('sweetalert::alert')
+
     <div class="sidebar bg-dark">
         <h2 class="text-center text-white py-3 px-5">Todo Lists</h2>
         <ul class="navbar-nav flex-column ">
@@ -62,15 +64,15 @@
                     <div class="row">
                         <div class="col-12 mb-3">
                             <label for="name" class="form-label">Name list :</label>
-                            <input type="text" name="name" class="form-control" id="name">
+                            <input type="text" required name="name" class="form-control" id="name">
                         </div>
                         <div class="col-12 mb-3">
                             <label for="description" class="form-label">Description :</label>
-                            <input type="text" name="description" class="form-control" id="description">
+                            <input type="text" required name="description" class="form-control" id="description">
                         </div>
                         <div class="col-12 mb-3">
                             <label for="date" class="form-label">Date :</label>
-                            <input type="date" name="date" class="form-control" id="date">
+                            <input type="date" required name="date" class="form-control" id="date">
                             <script>
                                 const today = new Date().toISOString().split('T')[0];
                                 document.getElementById('date').value = today;
@@ -78,7 +80,7 @@
                         </div>
                         <div class="col-12 mb-3">
                             <label for="duedate" class="form-label">Maturity date :</label>
-                            <input type="date" name="duedate" class="form-control" id="duedate">
+                            <input type="date" required name="duedate" class="form-control" id="duedate">
                         </div>
                         <div class="col-12 mb-3">
                             <label for="" class="form-label">Priority :</label>

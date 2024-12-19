@@ -21,8 +21,10 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($validate)) {
+            alert()->info('Welcome',Auth::user()->name);
             return redirect('/home');
         }
+        alert()->error('Oops','Something went wrong!');
         return redirect()->back();
     }
     public function register(Request $request){
@@ -41,7 +43,8 @@ class AuthController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        return redirect('/');
+        alert()->success('Success','Your account has been added');
+        return redirect('/login');
 
     }
 

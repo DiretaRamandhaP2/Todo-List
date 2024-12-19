@@ -13,7 +13,7 @@ class ListController extends Controller
     public function view()
     {
         $user = Auth::user();
-        $list = TodoList::with('user')->where('create_by',$user->id)->get();
+        $list = TodoList::with('user')->where('create_by', $user->id)->get();
         return view('crud.home', compact('list'));
     }
     public function view_create()
@@ -22,14 +22,14 @@ class ListController extends Controller
     }
     public function view_update(Request $request)
     {
-        $list = TodoList::where('id',$request->id_list)->first();
-        return view('crud.update',compact('list'));
+        $list = TodoList::where('id', $request->id_list)->first();
+        return view('crud.update', compact('list'));
     }
 
     //fitur
     public function create(Request $request)
     {
-        $request->validate([
+        $validate = $request->validate([
             'name' => ['required'],
             'description' => ['required'],
             'date' => ['required'],
@@ -37,6 +37,10 @@ class ListController extends Controller
             'priority' => ['required'],
         ]);
 
+        if (!$validate) {
+            alert()->error('Oops', 'Something went wrong!');
+            return redirect()->back();
+        }
         $user = Auth::user();
         $list = new TodoList();
         $list->name = $request->name;
@@ -48,6 +52,7 @@ class ListController extends Controller
         $list->create_by = $user->id;
         $list->save();
 
+        alert()->success('Success', 'Successfully added a list');
         return redirect('/home');
     }
     public function update(Request $request)
@@ -59,23 +64,28 @@ class ListController extends Controller
             'priority' => ['required'],
         ]);
 
-        $list = TodoList::where('id',$request->id_list)->first();
+        $list = TodoList::where('id', $request->id_list)->first();
         $list->name = $request->name;
         $list->description = $request->description;
         $list->duedate = $request->duedate;
         $list->priority = $request->priority;
         $list->save();
 
+        alert()->success('Success', 'Successfully changed the list');
         return redirect('/home');
     }
-    public function delete(Request $request){
-        TodoList::where('id',$request->id_list)->delete();
+    public function delete(Request $request)
+    {
+        TodoList::where('id', $request->id_list)->delete();
+        alert()->success('Success', 'Successfully delete the list');
         return redirect()->back();
     }
-    public function list_done(Request $request){
-        $list = TodoList::where('id',$request->id_list)->first();
+    public function list_done(Request $request)
+    {
+        $list = TodoList::where('id', $request->id_list)->first();
         $list->status = 'finished';
         $list->save();
+        alert()->success('Success', 'successfully completed it');
         return redirect()->back();
     }
 }

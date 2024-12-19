@@ -68,14 +68,6 @@
                             <label for="description" class="form-label">Description :</label>
                             <input type="text" name="description" class="form-control" id="description" value="{{ $list->description }}">
                         </div>
-                        {{-- <div class="col-12 mb-3">
-                            <label for="date" class="form-label">Date :</label>
-                            <input type="date" name="date" class="form-control" id="date" value={{ $list->date }}>
-                            <script>
-                                const today = new Date().toISOString().split('T')[0];
-                                document.getElementById('date').value = today;
-                            </script>
-                        </div> --}}
                         <div class="col-12 mb-3">
                             <label for="duedate" class="form-label">Maturity date :</label>
                             <input type="date" name="duedate" class="form-control" id="duedate" value={{ $list->duedate }}>

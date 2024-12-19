@@ -51,6 +51,7 @@
     </style>
 
     <body>
+    @include('sweetalert::alert')
         <div class="sidebar bg-dark">
             <h2 class="text-center text-white py-3 px-5">Todo Lists</h2>
             <ul class="navbar-nav flex-column ">

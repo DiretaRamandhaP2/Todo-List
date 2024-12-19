@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
 </head>
 <body>
+    @include('sweetalert::alert')
     <div class="container" >
         <form action="/auth" method="post" class=" w-100 d-flex justify-content-center align-items-center" style="height: 100vh;">
             @csrf

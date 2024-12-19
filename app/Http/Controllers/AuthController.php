@@ -34,9 +34,9 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
         if (!$validate) {
-           return redirect()->back();
+            alert()->error('Oops', 'Something went wrong!');
+            return redirect()->back();
         }
-
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
